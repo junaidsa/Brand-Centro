@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700');
+
+/* Apply the font globally */
+body {
+    font-family: 'Playfair Display', sans-serif;
+}
+
+/* Add this to your CSS file */
+.custom-scrollbar {
+    scrollbar-width: auto;
+    scrollbar-color: #c89c4e #f5f5f5; /* For Firefox */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 80px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f5f5f5; /* Background of the track */
+    border-radius: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #c89c4e; 
+    border-radius: 8px; 
+    border: 2px solid #f5f5f5; 
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #b5853e; /* Color on hover */
+  }
+  
