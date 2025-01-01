@@ -14,6 +14,7 @@
     IoMdHeart,
   } from "react-icons/io";
   import { CiSliderHorizontal } from "react-icons/ci";
+import FloorPlanDisplay from "./Pages/FloorPlanDisplay";
 
   const App = () => {
     const [wishListArray, setWishListArray] = useState([]);
@@ -199,6 +200,16 @@
             <div className="p-4">
               <Routes>
                 <Route
+                  path="/"
+                  element={
+                    <img
+                      src="Brand Centro 1.jpg"
+                      alt="Static View"
+                      className="max-w-full max-h-full rounded shadow-lg"
+                    />
+                  }
+                />
+                <Route
                   path="/3d-view"
                   element={
                     <img
@@ -219,9 +230,7 @@
                 />
                 <Route
                   path="/2d-view"
-                  element={
-                    <h2 className="text-xl font-bold">2D View Placeholder</h2>
-                  }
+                  element={<FloorPlanDisplay/>}
                 />
                 <Route
                   path="/floors"

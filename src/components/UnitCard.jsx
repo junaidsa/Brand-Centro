@@ -79,10 +79,6 @@ const UnitCard = ({ unit, wishListArray, setWishListArray, onRemove }) => {
                 unit.type.match(/\d+/)?.[0] === "1" ? "" : "s"
               }`}
         </div>
-        <div className="flex items-center">
-          <span className="text-gray-500 mr-2">🧭</span>
-          {unit.orientation || "Unknown"}
-        </div>
       </div>
     </div>
   );
