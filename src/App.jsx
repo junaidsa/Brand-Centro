@@ -33,7 +33,13 @@ const AppContent = ({
   isSideBarOpen,
 }) => {
   const location = useLocation();
-
+  const [scale, setScale] = useState(1);
+  useEffect(() => {
+    if (wishListArray.length >= 0) {
+      setScale(1.3); 
+      setTimeout(() => setScale(1), 200); 
+    }
+  }, [wishListArray]);
   return (
     <div className="flex h-screen bub">
       <NavigationBar />
@@ -58,27 +64,29 @@ const AppContent = ({
         <div className="p-4 border-b flex justify-between items-center">
           <img src="logo1.png" alt="BrandCentro" className="w-24 h-auto" />
           <Link
-            to="/wishlist"
-            className="p-1 relative w-10 h-10 rounded-lg text-[#c89c4e] cursor-pointer bg-gray-100 flex items-center justify-center"
-          >
-            <motion.div
-              animate={{ scale: 1 }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 10,
-              }}
-            >
-              {wishListArray.length === 0 ? (
-                <CiHeart size={35} />
-              ) : (
-                <IoMdHeart size={35} />
-              )}
-            </motion.div>
-            <p className="absolute text-[13px] mb-1 font-bold transition-all duration-500 text-white">
-              {wishListArray.length !== 0 && wishListArray.length}
-            </p>
-          </Link>
+      to="/wishlist"
+      className="p-1 relative w-10 h-10 rounded-lg text-[#c89c4e] cursor-pointer bg-gray-100 flex items-center justify-center"
+    >
+      <motion.div
+        animate={{ scale }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 10,
+        }}
+      >
+        {wishListArray.length === 0 ? (
+          <CiHeart size={35} />
+        ) : (
+          <IoMdHeart size={35} className="text-[#c89c4e]" />
+        )}
+      </motion.div>
+      {wishListArray.length > 0 && (
+        <p className="absolute text-[13px] mb-1 font-bold transition-all duration-500 text-white">
+          {wishListArray.length}
+        </p>
+      )}
+    </Link>
         </div>
 
         <div className={`flex-1 overflow-y-auto p-[10px] custom-scrollbar`}>
@@ -241,7 +249,7 @@ const App = () => {
     if(Loading){
       return (
         <div className="flex justify-center items-center h-screen"> 
-        <img src={loader} alt="" />
+        <img src={loader} alt="" height={280} width={280}/>
         </div>
       )
      }
