@@ -36,7 +36,6 @@ const UnitCard = ({ unit, wishListArray, setWishListArray, onRemove }) => {
   };
 
   const getImage = (image) => {
-    console.log(image);
 
     if (image === "Type B TWO BEDROOM TYPICAL FLAT-101.png") {
       return R101;

@@ -14,7 +14,7 @@ import Wishlist from "./Pages/Wishlist";
 import NavigationBar from "./components/NavigationBar";
 import { motion } from "framer-motion";
 import loader from "./assets/Brand Centro Floor Plan.gif";
-import image from "../public/Brand Centro 1.jpg";
+import image from "/Brand Centro 1.jpg";
 import {
   IoIosArrowBack,
   IoIosArrowForward,
@@ -22,6 +22,8 @@ import {
 } from "react-icons/io";
 import { CiSliderHorizontal } from "react-icons/ci";
 import FloorPlanDisplay from "./Pages/FloorPlanDisplay";
+import ModelView from "./Pages/ModelView";
+import Floors from "./Pages/Floors";
 
 const AppContent = ({
   wishListArray,
@@ -88,14 +90,12 @@ const AppContent = ({
       )}
     </Link>
         </div>
-
         <div className={`flex-1 overflow-y-auto p-[10px] custom-scrollbar`}>
           <Filters
             filters={filters}
             updateFilters={updateFilters}
             floors_Data={floors_Data}
           />
-
           <div className="mt-6">
             <h3 className="text-lg font-bold mb-4">Results</h3>
             {location.pathname === "/2d-view" ? (
@@ -155,13 +155,7 @@ const AppContent = ({
             />
             <Route
               path="/3d-view"
-              element={
-                <img
-                  src="Brand Centro 1.jpg"
-                  alt="Static View"
-                  className="max-w-full max-h-full rounded shadow-lg"
-                />
-              }
+              element={<ModelView/>}
             />
             <Route
               path="/wishlist"
@@ -175,13 +169,7 @@ const AppContent = ({
             <Route path="/2d-view" element={<FloorPlanDisplay />} />
             <Route
               path="/floors"
-              element={
-                <img
-                  src="Brand Centro 1.jpg"
-                  alt="Static View"
-                  className="max-w-full max-h-full rounded shadow-lg"
-                />
-              }
+              element={<Floors/>}
             />
           </Routes>
         </div>
@@ -202,7 +190,7 @@ const App = () => {
   });
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 3000);
+    const timer = setTimeout(() => setIsLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
