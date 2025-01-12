@@ -1,7 +1,7 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { AiOutlineHeart, AiOutlineEye } from "react-icons/ai";
 
-// Import all images from the assets folder
 import R101 from "../assets/unit plans/Type B TWO BEDROOM TYPICAL FLAT-101.png";
 import R102 from "../assets/unit plans/Type A TWO BEDROOM TYPICAL FLAT-102.png";
 import R103 from "../assets/unit plans/Type A STUDIO TYPICAL FLAT-103.png";
@@ -20,6 +20,7 @@ import R206_806 from "../assets/unit plans/TYPICAL FLAT-206 TO 806 Type B ONE BE
 import R207_807 from "../assets/unit plans/Type A ONE BEDROOM TYPICAL FLAT-207 TO 807.png";
 
 const UnitCard = ({ unit, wishListArray, setWishListArray, onRemove }) => {
+  const navigate = useNavigate();
 
   const isWishlisted = wishListArray.some(
     (item) => item.unitNo === unit.unitNo
@@ -82,18 +83,37 @@ const UnitCard = ({ unit, wishListArray, setWishListArray, onRemove }) => {
     return null; 
   };
 
+
+
+  const viewDetails = () => {
+    navigate("/apartment-details", { state: { unit, image: getImage(unit.image) } });
+  };
+
   return (
-    <div className="border rounded-lg shadow-md p-4 bg-white relative max-w-sm transition-all duration-300">
+    <div
+      onClick={viewDetails}
+      className="border rounded-lg shadow-md p-4 bg-white relative max-w-sm transition-all duration-300 cursor-pointer"
+    >
       <div className="absolute top-3 right-3 flex flex-col gap-1">
         <button
-          onClick={toggleWishlist}
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent triggering navigation
+            toggleWishlist();
+          }}
           className={`p-2 rounded-full ${
-            isWishlisted ? "bg-[#c89c4e] text-white" : "bg-yellow-50 text-gray-600 hover:bg-yellow-100"
+            isWishlisted
+              ? "bg-[#c89c4e] text-white"
+              : "bg-yellow-50 text-gray-600 hover:bg-yellow-100"
           }`}
         >
           <AiOutlineHeart size={20} />
         </button>
-        <button className="p-2 bg-yellow-50 rounded-full hover:bg-yellow-100">
+        <button
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent triggering navigation
+          }}
+          className="p-2 bg-yellow-50 rounded-full hover:bg-yellow-100"
+        >
           <AiOutlineEye className="text-gray-600" size={20} />
         </button>
       </div>

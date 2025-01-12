@@ -24,6 +24,7 @@ import { CiSliderHorizontal } from "react-icons/ci";
 import FloorPlanDisplay from "./Pages/FloorPlanDisplay";
 import ModelView from "./Pages/ModelView";
 import Floors from "./Pages/Floors";
+import ApartmentDetails from "./Pages/AppartmentDetails";
 
 const AppContent = ({
   wishListArray,
@@ -97,7 +98,9 @@ const AppContent = ({
             floors_Data={floors_Data}
           />
           <div className="mt-6">
-            <h3 className="text-lg font-bold mb-4">Results</h3>
+          <h3 className="text-xl font-bold mb-4">Results</h3>
+
+            <h3 className="text-lg font-bold mb-4"></h3>
             {location.pathname === "/2d-view" ? (
               <img src={image} alt="2D View" />
             ) : filteredUnits.length > 0 ? (
@@ -171,6 +174,8 @@ const AppContent = ({
               path="/floors"
               element={<Floors/>}
             />
+          <Route path="/apartment-details" element={<ApartmentDetails />} />
+
           </Routes>
         </div>
       </main>
