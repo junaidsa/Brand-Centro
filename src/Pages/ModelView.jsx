@@ -15,7 +15,6 @@ const Model = () => {
     mouse.current.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.current.y = -(event.clientY / window.innerHeight) * 2 + 1;
   };
-
   React.useEffect(() => {
     window.addEventListener("mousemove", onMouseMove);
     return () => {
